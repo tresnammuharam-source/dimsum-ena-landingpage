@@ -4,191 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimsum Premium ENA</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
+        * {
             margin: 0;
-            background-color: #FFD7D7;
-            color: #222;
+            padding: 0;
+            box-sizing: border-box;
         }
-
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #FCE2C9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header / Hero Section */
         header {
-            background-color: #C55B11;
+            background: linear-gradient(135deg, #598665 0%, #FCE2C9 100%);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
         header h1 {
-            font-size: 40px;
-            margin: 0;
+            font-size: 3rem;
             font-weight: 700;
-        }
-
-        header p {
-            margin-top: 10px;
-            font-size: 18px;
-        }
-
-        .section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #C55B11;
             margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        .cta-button {
+            background-color: #FCE2C9;
+            color: #598665;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeIn 2s ease-in;
+        }
+        .cta-button:hover {
+            background-color: #598665;
+            color: #FCE2C9;
+            transform: translateY(-5px);
+        }
+        /* Sections */
+        section {
+            padding: 80px 0;
+            animation: fadeIn 1s ease-in;
+        }
+        section h2 {
             text-align: center;
+            font-size: 2.5rem;
+            color: #598665;
+            margin-bottom: 40px;
         }
-
-        /* Card produk */
-        .product-grid {
+        /* Varian Produk */
+        .products {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
-
         .product-card {
             background: white;
             border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            border: 3px solid #C55B11;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
         .product-card img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            padding: 20px;
+            font-size: 1.5rem;
+            color: #598665;
+        }
+        .product-card p {
+            padding: 0 20px;
+            color: #666;
+        }
+        .product-card .cta-button {
+            margin: 20px;
+        }
+        /* Keunggulan */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .feature {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .feature h3 {
+            color: #598665;
             margin-bottom: 10px;
         }
-
-        .product-card h3 {
-            margin: 10px 0;
-            color: #C55B11;
-            font-weight: 600;
+        /* Cara Order */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
-
-        /* Harga */
-        .price-box {
-            background: #fff;
-            border-left: 8px solid #C55B11;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .price-box span {
-            font-size: 32px;
-            font-weight: 700;
-            color: #C55B11;
-        }
-
-        /* CTA tombol WA */
-        .btn-wa {
-            display: block;
-            background: #C55B11;
-            color: white;
-            padding: 18px;
-            margin: 40px auto;
-            text-align: center;
-            width: 80%;
-            max-width: 350px;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .testimonial {
+        .step {
+            display: flex;
+            align-items: center;
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            border: 3px solid #C55B11;
-            margin-top: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
+        .step-number {
+            background: #598665;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+        /* Kontak */
+        .contact {
+            text-align: center;
+            background: #598665;
+            color: white;
+            padding: 60px 20px;
+        }
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+        .contact p {
+            margin-bottom: 30px;
+        }
+        .contact .cta-button {
+            background-color: #FCE2C9;
+            color: #598665;
+        }
+        .contact .cta-button:hover {
+            background-color: white;
+            color: #598665;
+        }
+        /* Footer */
         footer {
-            background: #C55B11;
+            background: #333;
             color: white;
             text-align: center;
             padding: 20px;
-            margin-top: 40px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            .step-number {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Dimsum Premium ENA</h1>
-    <p>Fresh • Premium • Lembut • Siap Dikukus Kapan Saja</p>
-</header>
-
-<section class="section">
-    <h2 class="title">Varian Produk</h2>
-
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="https://via.placeholder.com/120?text=Wortel" alt="">
-            <h3>Topping Wortel</h3>
+    <!-- Header / Hero Section -->
+    <header>
+        <div class="container">
+            <h1>Dimsum Premium ENA</h1>
+            <p>Dimsum fresh, lembut, premium, dan siap dikukus kapan saja.</p>
+            <a href="#contact" class="cta-button">Pesan Sekarang</a>
         </div>
+    </header>
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/120?text=Sosis" alt="">
-            <h3>Topping Sosis</h3>
+    <!-- Section Varian Produk -->
+    <section id="products">
+        <div class="container">
+            <h2>Varian Produk</h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Dimsum+Wortel" alt="Dimsum Topping Wortel">
+                    <h3>Dimsum Topping Wortel</h3>
+                    <p>Dimsum dengan topping wortel segar, gurih dan lezat.</p>
+                    <a href="#contact" class="cta-button">Pesan</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Dimsum+Sosis" alt="Dimsum Topping Sosis">
+                    <h3>Dimsum Topping Sosis</h3>
+                    <p>Dimsum dengan topping sosis premium, cocok untuk semua kalangan.</p>
+                    <a href="#contact" class="cta-button">Pesan</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Dimsum+Daging" alt="Dimsum Topping Daging">
+                    <h3>Dimsum Topping Daging</h3>
+                    <p>Dimsum dengan topping daging pilihan, rasa autentik dan lembut.</p>
+                    <a href="#contact" class="cta-button">Pesan</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Dimsum+Telur" alt="Dimsum Topping Telur">
+                    <h3>Dimsum Topping Telur</h3>
+                    <p>Dimsum dengan topping telur, tekstur yang unik dan nikmat.</p>
+                    <a href="#contact" class="cta-button">Pesan</a>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/120?text=Daging" alt="">
-            <h3>Topping Daging</h3>
+    <!-- Section Keunggulan -->
+    <section id="features">
+        <div class="container">
+            <h2>Keunggulan Kami</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Bahan Premium</h3>
+                    <p>Menggunakan bahan-bahan berkualitas tinggi untuk hasil terbaik.</p>
+                </div>
+                <div class="feature">
+                    <h3>Dibuat Fresh Setiap Hari</h3>
+                    <p>Dimsum dibuat segar setiap hari untuk menjaga kualitas.</p>
+                </div>
+                <div class="feature">
+                    <h3>Tanpa Pengawet Berbahaya</h3>
+                    <p>Bebas dari pengawet berbahaya, aman untuk dikonsumsi.</p>
+                </div>
+                <div class="feature">
+                    <h3>Rasa Gurih & Lembut</h3>
+                    <p>Rasa yang gurih dan tekstur yang lembut memanjakan lidah.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/120?text=Telur" alt="">
-            <h3>Topping Telur</h3>
+    <!-- Section Cara Order -->
+    <section id="order">
+        <div class="container">
+            <h2>Cara Order</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Pilih Varian Dimsum</h3>
+                        <p>Pilih varian dimsum favorit Anda dari menu kami.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Pesan via WhatsApp</h3>
+                        <p>Hubungi kami melalui WhatsApp untuk melakukan pemesanan.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Dimsum Dikirim atau Diambil</h3>
+                        <p>Dimsum akan dikirim ke alamat Anda atau bisa diambil langsung.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section">
-    <h2 class="title">Harga</h2>
+    <!-- Section Kontak -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Pemesanan Dimsum Premium ENA</h2>
+            <p>Nomor WhatsApp: 089693630091</p>
+            <a href="https://wa.me/6289693630091" class="cta-button">Chat WhatsApp Sekarang</a>
+        </div>
+    </section>
 
-    <div class="price-box">
-        <p>Harga per pcs</p>
-        <span>Rp 3.000</span>
-    </div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dimsum Premium ENA. All rights reserved.</p>
+        </div>
+    </footer>
 
-<a class="btn-wa" href="https://wa.me/6289693630091?text=Halo%20Saya%20ingin%20order%20Dimsum%20Premium%20ENA" target="_blank">
-    Pesan via WhatsApp
-</a>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-<section class="section">
-    <h2 class="title">Testimoni</h2>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
 
-    <div class="testimonial">
-        <p>“Dimsumnya enak banget! Lembut dan toppingnya terasa.”</p>
-        <b>— Rudi</b>
-    </div>
-
-    <div class="testimonial">
-        <p>“Harga 3 ribu tapi rasanya premium banget!”</p>
-        <b>— Maya</b>
-    </div>
-</section>
-
-<footer>
-    © 2025 Dimsum Premium ENA
-</footer>
-
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
+
+
